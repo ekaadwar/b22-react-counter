@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+/* mystyle */
+.container {
+  width: 600px;
+  background-color: silver;
+  border-radius: 10px;
+  margin: 100px auto;
+  text-align: center;
+  padding: 10px;
+}
+
+.counterBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counterBody span {
+  margin: 0 20px;
+  font-size: 100px;
+  font-weight: bold;
+}
