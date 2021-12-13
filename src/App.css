@@ -38,20 +38,64 @@
 }
 
 /* mystyle */
+.parent {
+  background: linear-gradient(to bottom right, #0099cc 0%, #333399 100%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
-  width: 600px;
-  background-color: silver;
+  width: 300px;
+  height: 400px;
+  background-color: #101026;
   border-radius: 10px;
-  margin: 100px auto;
+  display: flex;
   text-align: center;
+  /* justify-content: center; */
+  flex-direction: column;
   padding: 10px;
+  color: #fff;
+  padding-top: 5%;
+  box-sizing: border-box;
+  box-shadow: 5px 5px 10px #000;
 }
 
 .counterBody {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: silver; */
+  width: 250px;
+  margin: 0 auto;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 10px;
+  color: #101026;
+  font-size: 20px;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:active {
+  background-color: #0099cc;
+  box-shadow: 0 0 25px #0099cc, 0 0 50px #0099cc, 0 0 75px #0099cc,
+    0 0 100px #0099cc;
+}
+
+/* button.btn p {
+  font-size: 16px;
+} */
 
 .counterBody span {
   margin: 0 20px;

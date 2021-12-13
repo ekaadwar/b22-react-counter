@@ -1,42 +1,67 @@
 import React from "react";
 
 class Counter extends React.Component {
-  state = {
-    result: 0,
-    limit: "",
-  };
-
   subData = () => {
-    const count = this.state.result - 1;
-    if (count >= 0) {
-      this.setState({ limit: "" });
-      this.setState({ result: count });
-    } else {
-      this.setState({ limit: "This is minimum Number" });
-    }
+    let { num: result } = this.props;
+
+    this.alertMessage(result, false, () => {
+      const data = {
+        result: result - 1,
+        limit: "",
+      };
+
+      this.props.change(data);
+    });
   };
 
   sumData = () => {
-    const count = this.state.result + 1;
-    if (count <= 10) {
-      this.setState({ limit: "" });
-      this.setState({ result: count });
+    let { num: result } = this.props;
+
+    this.alertMessage(result, true, () => {
+      this.props.change({ result: result + 1, limit: "" });
+    });
+  };
+
+  alertMessage = (result, isSum, cb) => {
+    if (isSum) {
+      result++;
     } else {
-      this.setState({ limit: "This is maximum Number" });
+      result--;
+    }
+
+    if (result > 10) {
+      this.props.change({
+        result: this.props.num,
+        limit: "This is maximum Number",
+      });
+    } else if (result < 0) {
+      this.props.change({
+        result: this.props.num,
+        limit: "This is minimum Number",
+      });
+    } else {
+      cb();
     }
   };
 
   render() {
     return (
       <React.Fragment>
-        <div className="container">
-          <h1>{this.props.counterTittle}</h1>
-          <div className="counterBody">
-            <button onClick={this.subData}>-</button>
-            <span>{this.state.result}</span>
-            <button onClick={this.sumData}>+</button>
+        <div className="parent">
+          <div className="container">
+            <h1>{this.props.counterTittle}</h1>
+
+            <div className="counterBody">
+              <div className="btn" onClick={this.subData}>
+                -
+              </div>
+              <span>{this.props.num}</span>
+              <div className="btn" onClick={this.sumData}>
+                +
+              </div>
+            </div>
+            {this.props.messageLimit}
           </div>
-          {this.state.limit}
         </div>
       </React.Fragment>
     );

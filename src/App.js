@@ -18,10 +18,25 @@ import Counter from "./components/Counter";
 import "./App.css";
 
 class App extends React.Component {
+  state = {
+    result: 0,
+    limit: "",
+  };
+
+  changeResult = (data) => {
+    this.setState({ result: data.result, limit: data.limit });
+  };
+
   render() {
     return (
       <React.Fragment>
-        <Counter counterTittle="Count" />
+        <Counter
+          change={this.changeResult}
+          num={this.state.result}
+          messageLimit={this.state.limit}
+          counterTittle="Count"
+        />
+        {console.log(this.state)}
       </React.Fragment>
     );
   }
