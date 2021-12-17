@@ -1,43 +1,20 @@
-import React from "react";
-// ----- Form Login -------
-// import Form from "./components/FormLogin";
+import React, { Component } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+// import FormLogin from "./components/FormLogin";
+import CounterPage from "./pages/CounterPage";
+import HomePage from "./pages/HomePage";
+import ItemList from "./pages/ItemList";
 
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <h1>My First React</h1>
-//         <Form formTitle="This Title" />
-//       </React.Fragment>
-//     );
-//   }
-// }
-// ----- Akhir Form Login -------
-
-import Counter from "./components/Counter";
-import "./App.css";
-
-class App extends React.Component {
-  state = {
-    result: 0,
-    limit: "",
-  };
-
-  changeResult = (data) => {
-    this.setState({ result: data.result, limit: data.limit });
-  };
-
+class App extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Counter
-          change={this.changeResult}
-          num={this.state.result}
-          messageLimit={this.state.limit}
-          counterTittle="Count"
-        />
-        {console.log(this.state)}
-      </React.Fragment>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/counter" component={CounterPage} />
+          <Route path="/item-list" component={ItemList} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

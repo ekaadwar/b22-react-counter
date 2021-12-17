@@ -30,7 +30,12 @@ class FormLogin extends React.Component {
         {this.props.formTitle}
         <div>Username</div>
         <div>
-          <input onChange={(event) => this.setState({ username: event.target.value })} type="text" />
+          <input
+            onChange={(event) =>
+              this.setState({ username: event.target.value })
+            }
+            type="text"
+          />
         </div>
         <div>Password</div>
         <div>
