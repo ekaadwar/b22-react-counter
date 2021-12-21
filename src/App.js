@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 // import FormLogin from "./components/FormLogin";
 import CounterPage from "./pages/CounterPage";
 import HomePage from "./pages/HomePage";
-import ItemList from "./pages/ItemList";
+import Items from "./pages/ItemList";
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/counter" component={CounterPage} />
-          <Route path="/item-list" component={ItemList} />
+          <Route path="/items" component={Items} />
         </Switch>
       </BrowserRouter>
     );

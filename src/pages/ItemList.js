@@ -1,23 +1,17 @@
 import React, { Component } from "react";
 import qs from "querystring";
+import axios from "axios";
 
 class ItemList extends Component {
   state = {
-    data: [
-      { name: "Kopi Teguh", price: 18000 },
-      { name: "Kopi Joni", price: 20000 },
-      { name: "Kopi Jontor", price: 12000 },
-      { name: "Teh Talua Simpang Bakti Ibu", price: 18000 },
-      { name: "Teh Talua Kubang Putiah", price: 20000 },
-      { name: "Kopi Susu Bu Susi", price: 22000 },
-    ],
+    data: [],
     searchInput: "",
     searchEnd: "",
   };
 
   onSearch = (event) => {
     if (event.keyCode === 13) {
-      this.props.history.push(`/item-list?search=${this.state.searchInput}`);
+      this.props.history.push(`/items?search=${this.state.searchInput}`);
     }
   };
 
@@ -28,7 +22,13 @@ class ItemList extends Component {
   componentDidMount() {
     const { search } = this.parseQuery(this.props.location.search);
     this.setState({ searchInput: search });
+    this.getData();
   }
+
+  getData = async () => {
+    const { data } = await axios.get("http://localhost:8080/items");
+    this.setState({ data: data.results });
+  };
 
   doSearch = () => {
     const { search } = this.parseQuery(this.props.location.search);
